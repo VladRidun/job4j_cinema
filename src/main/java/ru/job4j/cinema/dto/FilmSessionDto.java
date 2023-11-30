@@ -14,6 +14,9 @@ public class FilmSessionDto {
     private String endTime;
     private int price;
 
+    public FilmSessionDto() {
+    }
+
     public FilmSessionDto(int id, Film film, Hall hall, String startTime,
                           String endTime, int price) {
         this.id = id;

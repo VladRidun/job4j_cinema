@@ -14,8 +14,11 @@ public class SessionPlaceDto {
     private Collection<Integer> rowCount;
     private Collection<Integer> placeInRowCount;
 
+    public SessionPlaceDto() {
+    }
+
     public SessionPlaceDto(int id, Film film, String startTime, String endTime,
-                       int price, Collection<Integer> rowCount, Collection<Integer> placeInRowCount) {
+                           int price, Collection<Integer> rowCount, Collection<Integer> placeInRowCount) {
         this.id = id;
         this.film = film;
         this.startTime = startTime;
