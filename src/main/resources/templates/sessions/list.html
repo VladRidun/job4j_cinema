@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <!--  Зависимости Bootstrap-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Расписание</title>
+</head>
+
+<body>
+<div class="container-fluid p-0">
+    <header th:insert="blocks/header :: header"></header>
+    <div class="container">
+        <div class="row">
+            <table class="table">
+                <tbody>
+                <tr th:each="sessionPlace: ${sessions}">
+                    <td style="width: 100px;">
+                        <img th:src="@{/files/{fileId}(fileId=${sessionPlace.film.fileId})}" width="250" alt="No image"/>
+                    </td>
+                    <td>
+                        <h3><a style="color: GoldenRod; text-decoration: none;" th:text="${sessionPlace.film.title}"
+                               th:href="@{/sessions/{id}(id=${sessionPlace.id})}"></a>
+                        </h3>
+                        <h6><span th:text="${sessionPlace.film.minimalAge}"></span>+</h6>
+                        <h7><span th:text="${sessionPlace.hall.name}"></span>.</h7>
+                        <br>
+                        <h7>Начало сеанса: <span th:text="${sessionPlace.startTime}"></span>.</h7>
+                        <h7>Окончание сеанса: <span th:text="${sessionPlace.endTime}"></span>.</h7>
+                        <h5><span th:text="${sessionPlace.price}"></span> руб.</h5>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <footer th:insert="blocks/footer :: footer"></footer>
+</div>
+</body>
+</html>
