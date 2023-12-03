@@ -29,8 +29,38 @@ checkstyle 10.0.
 
 Cоздать и заполнить таблицы БД  "cinema";
 
-Для этого открыть закладки Maven и выполнить -> plugins -> liquibase -> liquibase:update;
+Открыть закладки Maven и выполнить -> plugins -> liquibase -> liquibase:update;
 
 Запустить точку входа в приложение - класс Main (ru/job4j/cinema/Main.java);
 
 После в браузере открыть путь главной страницы WEB-приложения http://localhost:8080/ :cinema:;
+
+Главная страница WEB-приложения
+![](img/main.png)
+
+Страница с расписанием фильмов
+![](img/sessions.png)
+
+Страница покупки билета
+![](img/buying.png)
+
+Ошибка при покупке билета
+![](img/failed_buying.png)
+
+Страница с сообщением об успешной покупке билета
+![](img/success_buying.png)
+
+Страница регистрации для возможности покупки билета
+![](img/registration.png)
+
+Страница входа для зарегистрированных пользователей
+![](img/login.png)
+
+
+Developted by Java-programmer :coffee::
+
+:pen:Ridun Vladislav Valerievich 
+
+:calling:+79021218807 telegram, whatsapp
+
+:mailbox:ridunvv@gmail.com.

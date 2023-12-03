@@ -22,7 +22,7 @@ public class Sql2oFilmSessionRepository implements FilmSessionRepository {
             var query = connection.createQuery("SELECT * FROM film_sessions WHERE id = :id");
             query.addParameter("id", id);
             var filmSession = query.setColumnMappings(FilmSession.COLUMN_MAPPING).executeAndFetchFirst(FilmSession.class);
-            return Optional.ofNullable(filmSession);
+            return Optional.of(filmSession);
         }
     }
 

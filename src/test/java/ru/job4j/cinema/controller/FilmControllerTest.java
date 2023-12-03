@@ -23,7 +23,7 @@ class FilmControllerTest {
 
     @Test
     public void whenRequestFilmListPageThenGetPageWithFilmsPreview() {
-        var film1 = new FilmDto(1,"test1", "", 2023,
+        var film1 = new FilmDto(1, "test1", "", 2023,
                 20, 100, "", 1);
         var film2 = new FilmDto(2, "test2", "", 2023,
                 18, 150, "", 2);

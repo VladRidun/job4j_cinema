@@ -43,10 +43,10 @@ class Sql2oSessionRepositoryTest {
 
     @Test
     public void whenFindByIdSessionThenGetSame() {
-        var dateFirst = LocalDateTime.of(2023, 7, 16, 17, 30);
-        var dateSecond = LocalDateTime.of(2023, 7, 16, 19, 0);
-        FilmSession session = new FilmSession(6, 3, 2, dateFirst, dateSecond, 300);
-        assertThat(sql2oFilmSessionRepository.findById(6))
+        var startTime = LocalDateTime.of(2023, 9, 25, 13, 00);
+        var endTime = LocalDateTime.of(2023, 9, 25, 16, 0);
+        FilmSession session = new FilmSession(24, 2, 2, startTime, endTime, 450);
+        assertThat(sql2oFilmSessionRepository.findById(24).get())
                 .usingRecursiveComparison().isEqualTo(session);
     }
 }
