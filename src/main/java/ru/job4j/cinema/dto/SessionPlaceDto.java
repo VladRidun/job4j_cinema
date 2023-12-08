@@ -83,22 +83,4 @@ public class SessionPlaceDto {
     public void setPlaceInRowCount(Collection<Integer> placeInRowCount) {
         this.placeInRowCount = placeInRowCount;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        SessionPlaceDto that = (SessionPlaceDto) o;
-        return price == that.price && Objects.equals(film, that.film)
-                && Objects.equals(startTime, that.startTime) && Objects.equals(rowCount, that.rowCount);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(film, startTime, price, rowCount);
-    }
 }

@@ -87,22 +87,4 @@ public class FilmDto {
     public void setFileId(int fileId) {
         this.fileId = fileId;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        FilmDto that = (FilmDto) o;
-        return year == that.year && minimalAge == that.minimalAge && duration == that.duration
-                && Objects.equals(title, that.title) && Objects.equals(genre, that.genre);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(title, year, minimalAge, duration, genre);
-    }
 }

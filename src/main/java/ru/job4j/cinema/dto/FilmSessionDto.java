@@ -74,22 +74,4 @@ public class FilmSessionDto {
     public void setPrice(int price) {
         this.price = price;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        FilmSessionDto that = (FilmSessionDto) o;
-        return id == that.id && price == that.price && Objects.equals(film, that.film)
-                && Objects.equals(hall, that.hall) && Objects.equals(startTime, that.startTime);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, film, hall, startTime, price);
-    }
 }

@@ -69,7 +69,8 @@ public class Ticket {
             return false;
         }
         Ticket ticket = (Ticket) o;
-        return id == ticket.id;
+        return id == ticket.id && sessionId == ticket.sessionId && rowNumber == ticket.rowNumber
+                && placeNumber == ticket.placeNumber && userId == ticket.userId;
     }
 
     @Override

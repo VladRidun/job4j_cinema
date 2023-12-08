@@ -121,11 +121,12 @@ public class Film {
         Film film = (Film) o;
         return id == film.id && genreId == film.genreId
                 && Objects.equals(title, film.title)
-                && Objects.equals(year, film.year);
+                && Objects.equals(year, film.year)
+                && Objects.equals(fileId, film.fileId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, genreId, year);
+        return Objects.hash(id, title, genreId, year, fileId);
     }
 }
