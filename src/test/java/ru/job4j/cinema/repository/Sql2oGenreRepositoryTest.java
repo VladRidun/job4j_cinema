@@ -17,7 +17,7 @@ class Sql2oGenreRepositoryTest {
     public static void initRepositories() throws Exception {
         var properties = new Properties();
         try (var inputStream = Sql2oFileRepository.class.getClassLoader()
-                .getResourceAsStream("application.properties")) {
+                .getResourceAsStream("connection.properties")) {
             properties.load(inputStream);
         }
         var url = properties.getProperty("datasource.url");

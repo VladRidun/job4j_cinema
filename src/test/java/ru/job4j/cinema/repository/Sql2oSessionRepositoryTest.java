@@ -18,7 +18,7 @@ class Sql2oSessionRepositoryTest {
     public static void initRepositories() throws Exception {
         var properties = new Properties();
         try (var inputStream = Sql2oFileRepository.class.getClassLoader()
-                .getResourceAsStream("application.properties")) {
+                .getResourceAsStream("connection.properties")) {
             properties.load(inputStream);
         }
         var url = properties.getProperty("datasource.url");
@@ -34,7 +34,7 @@ class Sql2oSessionRepositoryTest {
     public void whenFindAllSessionsThenGetSame() {
         var startTime = LocalDateTime.of(2023, 9, 25, 13, 00);
         var endTime = LocalDateTime.of(2023, 9, 25, 16, 0);
-        FilmSession filmSession = new FilmSession(24, 2, 2, startTime, endTime, 450);
+        FilmSession filmSession = new FilmSession(6, 2, 2, startTime, endTime, 450);
         assertThat(sql2oFilmSessionRepository.findAll())
                 .hasSize(9)
                 .element(5)
@@ -45,8 +45,8 @@ class Sql2oSessionRepositoryTest {
     public void whenFindByIdSessionThenGetSame() {
         var startTime = LocalDateTime.of(2023, 9, 25, 13, 00);
         var endTime = LocalDateTime.of(2023, 9, 25, 16, 0);
-        FilmSession session = new FilmSession(24, 2, 2, startTime, endTime, 450);
-        assertThat(sql2oFilmSessionRepository.findById(24).get())
+        FilmSession session = new FilmSession(6, 2, 2, startTime, endTime, 450);
+        assertThat(sql2oFilmSessionRepository.findById(6).get())
                 .usingRecursiveComparison().isEqualTo(session);
     }
 }
