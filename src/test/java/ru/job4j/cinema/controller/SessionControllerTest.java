@@ -7,7 +7,7 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.ui.ConcurrentModel;
 import ru.job4j.cinema.dto.SessionPlaceDto;
 import ru.job4j.cinema.dto.FilmSessionDto;
-import ru.job4j.cinema.service.FilmSessionService;
+import ru.job4j.cinema.service.session.FilmSessionService;
 
 import java.util.List;
 

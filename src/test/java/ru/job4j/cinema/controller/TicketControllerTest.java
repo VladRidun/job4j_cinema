@@ -8,7 +8,7 @@ import org.springframework.ui.ConcurrentModel;
 import ru.job4j.cinema.dto.SessionPlaceDto;
 import ru.job4j.cinema.model.Ticket;
 import ru.job4j.cinema.model.User;
-import ru.job4j.cinema.service.TicketService;
+import ru.job4j.cinema.service.ticket.TicketService;
 
 import java.util.Optional;
 
