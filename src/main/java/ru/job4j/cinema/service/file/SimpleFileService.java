@@ -1,10 +1,11 @@
 package ru.job4j.cinema.service.file;
 
 import net.jcip.annotations.ThreadSafe;
+import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Service;
 import ru.job4j.cinema.dto.FileDto;
+import ru.job4j.cinema.mapper.FileMapper;
 import ru.job4j.cinema.repository.file.FileRepository;
-import ru.job4j.cinema.service.file.FileService;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -15,6 +16,7 @@ import java.util.Optional;
 @Service
 public class SimpleFileService implements FileService {
     private final FileRepository fileRepository;
+    private final FileMapper fileMapper = Mappers.getMapper(FileMapper.class);
 
     public SimpleFileService(FileRepository fileRepository) {
         this.fileRepository = fileRepository;
@@ -34,7 +36,8 @@ public class SimpleFileService implements FileService {
         if (fileOptional.isEmpty()) {
             return Optional.empty();
         }
-        var content = readFileAsBytes(fileOptional.get().getPath());
-        return Optional.of(new FileDto(fileOptional.get().getName(), content));
+        return Optional.of(fileMapper
+                .getModelFromEntityCustom(fileOptional
+                        .get(), readFileAsBytes(fileOptional.get().getPath())));
     }
 }

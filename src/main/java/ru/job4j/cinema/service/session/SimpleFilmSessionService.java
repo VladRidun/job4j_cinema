@@ -1,9 +1,12 @@
 package ru.job4j.cinema.service.session;
 
 import net.jcip.annotations.ThreadSafe;
+import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Service;
 import ru.job4j.cinema.dto.FilmSessionDto;
 import ru.job4j.cinema.dto.SessionPlaceDto;
+import ru.job4j.cinema.mapper.FilmSessionMapper;
+import ru.job4j.cinema.mapper.SessionPlaceMapper;
 import ru.job4j.cinema.model.FilmSession;
 import ru.job4j.cinema.repository.session.FilmSessionRepository;
 import ru.job4j.cinema.service.hall.HallService;
@@ -27,9 +30,11 @@ public class SimpleFilmSessionService implements FilmSessionService {
     private final AtomicInteger countPlaces = new AtomicInteger();
     private final Collection<Integer> savedPlaces = new ConcurrentLinkedQueue<>();
     private final Collection<Integer> savedRows = new ConcurrentLinkedQueue<>();
+    private final FilmSessionMapper filmSessionMapper = Mappers.getMapper(FilmSessionMapper.class);
+    private final SessionPlaceMapper sessionPlaceMapper = Mappers.getMapper(SessionPlaceMapper.class);
 
     public SimpleFilmSessionService(FilmSessionRepository sessionRepository,
-                                HallService hallService, FilmService filmService) {
+                                    HallService hallService, FilmService filmService) {
         this.sessionRepository = sessionRepository;
         this.hallService = hallService;
         this.filmService = filmService;
@@ -37,6 +42,7 @@ public class SimpleFilmSessionService implements FilmSessionService {
 
     @Override
     public SessionPlaceDto findById(int id) {
+
         var session = sessionRepository.findById(id).get();
         var film = filmService.findById(session.getFilmId()).get();
         var hall = hallService.findById(session.getHallId());
@@ -47,22 +53,14 @@ public class SimpleFilmSessionService implements FilmSessionService {
         while (countPlaces.incrementAndGet() <= placeInRowCount) {
             savedPlaces.add(countPlaces.get());
         }
-        return new SessionPlaceDto(
-                session.getId(), film, FORMATTER.format(session.getStartTime()),
-                FORMATTER.format(session.getEndTime()),
-                session.getPrice(), savedRows, savedPlaces);
+        return  sessionPlaceMapper.getSessionPlaceDto(session, film, savedRows, savedPlaces);
     }
 
     @Override
     public Collection<FilmSessionDto> findAll() {
         var sessions = sessionRepository.findAll();
         for (FilmSession session : sessions) {
-            var filmSession = new FilmSessionDto(
-                    session.getId(),
-                    filmService.findById(session.getFilmId()).get(),
-                    hallService.findById(session.getHallId()),
-                    FORMATTER.format(session.getStartTime()), FORMATTER.format(session.getEndTime()),
-                    session.getPrice());
+            var filmSession = filmSessionMapper.getFilmSessionDto(session, filmService.findById(session.getFilmId()).get(), hallService.findById(session.getHallId()));
             sessionPlaces.putIfAbsent(session.getId(), filmSession);
         }
         return sessionPlaces.values();

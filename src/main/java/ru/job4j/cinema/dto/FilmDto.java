@@ -1,7 +1,7 @@
 package ru.job4j.cinema.dto;
+import lombok.Data;
 
-import java.util.Objects;
-
+@Data
 public class FilmDto {
     private int id;
     private String title;

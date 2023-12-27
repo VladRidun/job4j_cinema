@@ -1,9 +1,12 @@
 package ru.job4j.cinema.model;
 
+import lombok.Data;
+
 import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.Objects;
 
+@Data
 public class FilmSession {
     public static final Map<String, String> COLUMN_MAPPING = Map.of(
             "id", "id",

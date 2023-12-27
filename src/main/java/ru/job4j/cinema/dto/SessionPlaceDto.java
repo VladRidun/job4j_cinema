@@ -1,10 +1,12 @@
 package ru.job4j.cinema.dto;
 
+import lombok.Data;
 import ru.job4j.cinema.model.Film;
 
 import java.util.Collection;
 import java.util.Objects;
 
+@Data
 public class SessionPlaceDto {
     private int id;
     private Film film;

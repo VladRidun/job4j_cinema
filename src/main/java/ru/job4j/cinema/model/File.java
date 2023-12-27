@@ -1,7 +1,10 @@
 package ru.job4j.cinema.model;
 
+import lombok.Data;
+
 import java.util.Objects;
 
+@Data
 public class File {
     private int id;
     private String name;

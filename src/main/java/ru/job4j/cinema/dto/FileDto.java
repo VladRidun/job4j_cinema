@@ -1,8 +1,10 @@
 package ru.job4j.cinema.dto;
 
-import java.util.Arrays;
-import java.util.Objects;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
 public class FileDto {
 
     private String name;
