@@ -42,7 +42,6 @@ public class SimpleFilmSessionService implements FilmSessionService {
 
     @Override
     public SessionPlaceDto findById(int id) {
-
         var session = sessionRepository.findById(id).get();
         var film = filmService.findById(session.getFilmId()).get();
         var hall = hallService.findById(session.getHallId());

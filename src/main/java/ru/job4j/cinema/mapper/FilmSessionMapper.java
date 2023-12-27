@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
 @Mapper(componentModel = "spring")
 public interface FilmSessionMapper {
     default FilmSessionDto getFilmSessionDto(FilmSession filmSession, Film film, Hall hall) {
-        var filmSessionDto = new FilmSessionDto(
+        return new FilmSessionDto(
                 filmSession.getId(),
                 film,
                 hall,
@@ -18,6 +18,5 @@ public interface FilmSessionMapper {
                 DateTimeFormatter.ofPattern("EEEE dd MMMM HH:mm").format(filmSession.getEndTime()),
                 filmSession.getPrice()
         );
-        return filmSessionDto;
     }
 }
